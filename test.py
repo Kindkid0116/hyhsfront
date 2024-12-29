@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import database
+import os
 
 application = Flask(__name__)
 
@@ -44,5 +45,5 @@ def passwordcheck():
     password = request.form['pass']
     if password == "1234":
         return render_template('index.html')
-if __name__ == '__main__':
-    application.run(host='0.0.0.0',debug=True,port=5500)
+if __name__ == "__main__":
+    application.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
