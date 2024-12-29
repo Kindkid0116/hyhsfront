@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>교복 선도 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 16px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        a {
+            display: inline-block;
+            margin-bottom: 16px;
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            margin: 8px 0;
+            padding: 16px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background-color: #ff4b5c;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>교복 선도 프로그램 - 목록</h1>
+    <a href="/">메인 화면</a>
+
+    <ul>
+        {% for student in stu %}
+        <li>
+            {{ student[1] }} ({{ student[2] }}) 
+            
+            <form action="{{ url_for('delete', id=student[0]) }}" method="POST" style="display:inline;">
+                <button type="submit">삭제</button>
+            </form>
+            
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

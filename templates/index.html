@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함양고등학교 교복 선도</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 16px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 28px;
+        }
+        form {
+            background-color: #fff;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+        }
+        input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+        a {
+            display: inline-block;
+            color: #007BFF;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px;
+            text-align: center;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+            input[type="text"], input[type="submit"], a {
+                font-size: 18px;
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>교복 선도</h1>
+
+    <form method="POST" action="/submit">
+        <p><input type="text" placeholder="이름을 입력하세요." name="name" id="name" required></p>
+        <p><input type="text" placeholder="학번을 입력하세요." name="num" id="num" required></p>
+        <p><input type="submit" value="제출"></p>
+    </form>
+    <form action="/admit">
+        <p><input type="submit" value="목록 보기"></p>
+    </form>
+    <a href="/">메인 화면</a>
+
+</body>
+</html>

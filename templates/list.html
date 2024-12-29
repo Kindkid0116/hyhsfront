@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교복 선도 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 16px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        a {
+            display: inline-block;
+            margin: 16px 0;
+            font-weight: bold;
+            color: #007BFF;
+            text-decoration: none;
+            text-align: center;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            margin: 8px 0;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        span {
+            font-weight: bold;
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            a {
+                font-size: 18px;
+            }
+            li {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>교복 선도 프로그램 - 목록</h1>
+
+    <!-- 메인 화면 링크 -->
+    <a href="/">메인 화면</a>
+
+    <ul>
+        {% for student in stu %}
+        <li>
+            {{ student[1] }} ({{ student[2] }}) 
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
