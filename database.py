@@ -1,6 +1,7 @@
 import sqlite3
+import os
 
-DB_PATH = "students.db"
+DB_PATH = os.path.join(os.path.dirname(__file__), "students.db")
 
 def init_db():
     with sqlite3.connect(DB_PATH) as conn:
@@ -10,6 +11,7 @@ def init_db():
                           name TEXT NOT NULL,
                           num TEXT NOT NULL)''')
         conn.commit()
+DB_PATH = "students.db"
 
 def save(name, num):
     with sqlite3.connect(DB_PATH) as conn:
