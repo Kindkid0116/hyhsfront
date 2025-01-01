@@ -43,7 +43,7 @@ def admit():
 @application.route('/passwordcheck', methods=['POST'])
 def passwordcheck():
     password = request.form['pass']
-    if password == "1234":
+    if password == "0102":
         return render_template('index.html')
 if __name__ == "__main__":
     application.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
