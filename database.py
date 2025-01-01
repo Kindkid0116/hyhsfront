@@ -11,7 +11,7 @@ def init_db():
                           name TEXT NOT NULL,
                           num TEXT NOT NULL)''')
         conn.commit()
-DB_PATH = "students.db"
+DB_PATH = os.getenv("DB_PATH", "/tmp/students.db")
 
 def save(name, num):
     with sqlite3.connect(DB_PATH) as conn:
