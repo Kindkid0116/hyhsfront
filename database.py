@@ -6,6 +6,8 @@ import os
 DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(DATABASE_URL)
 Base = declarative_base()
+DB_PATH = os.getenv("DB_PATH", "/var/data/students.db")
+
 
 class Student(Base):
     __tablename__ = 'students'
