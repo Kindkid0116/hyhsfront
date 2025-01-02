@@ -4,8 +4,6 @@ import os
 
 application = Flask(__name__)
 
-@application.before_first_request
-def initialize_database():
     database.init_db()
 
 @application.route('/')
