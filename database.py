@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "students.db")
+DB_PATH = os.getenv("DB_PATH", "/tmp/students.db")
 
 def init_db():
     with sqlite3.connect(DB_PATH) as conn:
@@ -11,7 +11,6 @@ def init_db():
                           name TEXT NOT NULL,
                           num TEXT NOT NULL)''')
         conn.commit()
-DB_PATH = os.getenv("DB_PATH", "/tmp/students.db")
 
 def save(name, num):
     with sqlite3.connect(DB_PATH) as conn:
@@ -20,8 +19,7 @@ def save(name, num):
         conn.commit()
 
 def get_all_students():
-
-     with sqlite3.connect(DB_PATH) as conn:
+    with sqlite3.connect(DB_PATH) as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM students")
         return cursor.fetchall()
@@ -31,4 +29,3 @@ def delete_student(student_id):
         cursor = conn.cursor()
         cursor.execute("DELETE FROM students WHERE id = ?", (student_id,))
         conn.commit()
-
