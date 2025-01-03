@@ -4,7 +4,6 @@ import os
 
 application = Flask(__name__)
 
-database.init_db()
 
 @application.route('/')
 def index():
