@@ -4,6 +4,8 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL 환경 변수가 설정되지 않았습니다.")
 engine = create_engine(DATABASE_URL)
 Base = declarative_base()
 
@@ -14,9 +16,9 @@ class Student(Base):
     num = Column(String, nullable=False)
 
 Base.metadata.create_all(engine)
+
 Session = sessionmaker(bind=engine)
 session = Session()
-
 def save(name, num):
     student = Student(name=name, num=num)
     session.add(student)
