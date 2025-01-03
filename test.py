@@ -34,8 +34,11 @@ def delete(id):
 
 @application.route('/admit')
 def admit():
-    students = database.get_all_students()
+    """관리자 페이지"""
+    students = database.get_all_students()  # 데이터베이스에서 학생 목록 가져오기
+    print(f"현재 학생 목록: {students}")  # 디버깅용 출력
     return render_template('admit.html', stu=students)
+
 
 @application.route('/passwordcheck', methods=['POST'])
 def passwordcheck():
