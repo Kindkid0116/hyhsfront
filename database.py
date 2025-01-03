@@ -1,34 +1,32 @@
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 import os
+import sqlite3
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-engine = create_engine(DATABASE_URL)
-Base = declarative_base()
-DB_PATH = os.getenv("DB_PATH", "/var/data/students.db")
+# 데이터베이스 경로 설정
+DB_PATH = os.getenv("DB_PATH", "/tmp/students.db")
 
-
-class Student(Base):
-    __tablename__ = 'students'
-    id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    num = Column(String, nullable=False)
-
-Base.metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
-session = Session()
+def init_db():
+    with sqlite3.connect(DB_PATH) as conn:
+        cursor = conn.cursor()
+        cursor.execute('''CREATE TABLE IF NOT EXISTS students (
+                          id INTEGER PRIMARY KEY AUTOINCREMENT,
+                          name TEXT NOT NULL,
+                          num TEXT NOT NULL)''')
+        conn.commit()
 
 def save(name, num):
-    student = Student(name=name, num=num)
-    session.add(student)
-    session.commit()
+    with sqlite3.connect(DB_PATH) as conn:
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO students (name, num) VALUES (?, ?)", (name, num))
+        conn.commit()
 
 def get_all_students():
-    return session.query(Student).all()
+    with sqlite3.connect(DB_PATH) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM students")
+        return cursor.fetchall()
 
 def delete_student(student_id):
-    student = session.query(Student).filter_by(id=student_id).first()
-    if student:
-        session.delete(student)
-        session.commit()
+    with sqlite3.connect(DB_PATH) as conn:
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM students WHERE id = ?", (student_id,))
+        conn.commit()
