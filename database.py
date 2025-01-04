@@ -25,7 +25,12 @@ def save(name, num):
     session.commit()
 
 def get_all_students():
-    return session.query(Student).all()
+    try:
+        return session.query(Student).all()  # SQLAlchemy 쿼리
+    except Exception as e:
+        print(f"Error querying database: {e}")
+        return []
+
 
 def delete_student(student_id):
     student = session.query(Student).filter_by(id=student_id).first()
