@@ -25,11 +25,10 @@ def save(name, num):
     session.commit()
 
 def get_all_students():
-    try:
-        return session.query(Student).all()  # SQLAlchemy 쿼리
-    except Exception as e:
-        print(f"Error querying database: {e}")
-        return []
+    students = session.query(Student).all()
+    print(f"Fetched students for /admit: {students}")  # 디버깅
+    return students
+
 
 
 def delete_student(student_id):
