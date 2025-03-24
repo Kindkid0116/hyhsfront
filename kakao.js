@@ -4,7 +4,7 @@ console.log("카카오 SDK 초기화 상태:", Kakao.isInitialized());
 
 function loginWithKakao() {
     Kakao.Auth.authorize({
-        redirectUri: "https://hyhsfront.onrender.com/oauth"
+        redirectUri: "https://hyhsfront.onrender.com/auth/kakao/callback"
     });
 }
 // 카카오톡 메시지 보내기 함수
