@@ -1,4 +1,4 @@
-ffrom flask import Flask, request, redirect, session, url_for
+from flask import Flask, request, redirect, session, url_for
 import requests
 import os
 
