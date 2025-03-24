@@ -1,27 +1,26 @@
-from flask import Flask, render_template, request, redirect, url_for
-import database
+ffrom flask import Flask, request, redirect, session, url_for
+import requests
 import os
 
-
-application = Flask(__name__, static_folder="static")
+application = Flask(__name__)
 application.secret_key = "supersecretkey"
 
-KAKAO_REST_API_KEY = os.getenv("0b0a3dbfeff3a83de6ba52cc9e8c9922")
-KAKAO_REDIRECT_URI = "https://hyhsfront.onrender.com/oauth"
+KAKAO_REST_API_KEY = os.getenv("KAKAO_REST_API_KEY")
+KAKAO_REDIRECT_URI = "https://hyhsfront.onrender.com/auth/kakao/callback"
 
 @application.route('/auth/kakao/callback')
 def kakao_callback():
-    """카카오 로그인 콜백"""
+    """카카오 로그인 후 Redirect 처리"""
     code = request.args.get("code")
     token_url = "https://kauth.kakao.com/oauth/token"
-    
+
     data = {
         "grant_type": "authorization_code",
         "client_id": KAKAO_REST_API_KEY,
-        "https://hyhsfront.onrender.com/oauth": KAKAO_REDIRECT_URI,
+        "redirect_uri": KAKAO_REDIRECT_URI,
         "code": code
     }
-    
+
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
     res = requests.post(token_url, data=data, headers=headers)
     token_json = res.json()
@@ -31,6 +30,7 @@ def kakao_callback():
         return redirect(url_for("index"))
     else:
         return "카카오 로그인 실패", 400
+
 @application.route('/')
 def index():
     return render_template('main.html')
