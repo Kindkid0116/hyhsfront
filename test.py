@@ -7,7 +7,7 @@ application = Flask(__name__, static_folder="static")
 application.secret_key = "supersecretkey"
 
 KAKAO_REST_API_KEY = os.getenv("0b0a3dbfeff3a83de6ba52cc9e8c9922")
-KAKAO_REDIRECT_URI = "https://your-render-app.onrender.com/auth/kakao/callback"
+KAKAO_REDIRECT_URI = "https://hyhsfront.onrender.com/oauth"
 
 @application.route('/auth/kakao/callback')
 def kakao_callback():
@@ -18,7 +18,7 @@ def kakao_callback():
     data = {
         "grant_type": "authorization_code",
         "client_id": KAKAO_REST_API_KEY,
-        "https://hyhsfront.onrender.com": KAKAO_REDIRECT_URI,
+        "https://hyhsfront.onrender.com/oauth": KAKAO_REDIRECT_URI,
         "code": code
     }
     
