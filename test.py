@@ -4,6 +4,8 @@ import os
 
 application = Flask(__name__, static_folder="static")
 
+KAKAO_JAVASCRIPT_KEY = os.getenv("kakao_javascript")
+KAKAO_REST_API_KEY = os.getenv("kakao_reset")
 
 @application.route('/')
 def index():
