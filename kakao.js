@@ -1,18 +1,7 @@
 Kakao.init("9b49aa02342896995714b81149a51bdc");  // 카카오 개발자 센터에서 발급한 JavaScript 키 입력
 console.log("카카오 SDK 초기화 상태:", Kakao.isInitialized());
 
-// 카카오 로그인 함수
-function loginWithKakao() {
-    Kakao.Auth.login({
-        success: function(authObj) {
-            console.log("로그인 성공:", authObj);
-            alert("카카오 로그인 성공!");
-        },
-        fail: function(err) {
-            console.error("로그인 실패:", err);
-        }
-    });
-}
+
 function loginWithKakao() {
     Kakao.Auth.authorize({
         redirectUri: "https://hyhsfront.onrender.com/oauth"
