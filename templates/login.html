@@ -6,19 +6,17 @@
     <title>카카오톡 메시지 API 테스트</title>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
-        Kakao.init("0b0a3dbfeff3a83de6ba52cc9e8c9922");
+        Kakao.init("9b49aa02342896995714b81149a51bdc");  // 카카오 JavaScript 키
         console.log("카카오 SDK 초기화 상태:", Kakao.isInitialized());
+
+        // ✅ 카카오 로그인 (Redirect 방식으로 변경)
         function loginWithKakao() {
-            Kakao.Auth.login({
-                success: function(authObj) {
-                    console.log("로그인 성공:", authObj);
-                    alert("카카오 로그인 성공!");
-                },
-                fail: function(err) {
-                    console.error("로그인 실패:", err);
-                }
+            Kakao.Auth.authorize({
+                redirectUri: "https://hyhsfront.onrender.com/auth/kakao/callback"
             });
         }
+
+        // ✅ 카카오톡 메시지 보내기
         function sendKakaoMessage() {
             Kakao.API.request({
                 url: "/v2/api/talk/memo/default/send",
@@ -50,4 +48,3 @@
     <button onclick="sendKakaoMessage()">카카오톡 메시지 보내기</button>
 </body>
 </html>
-
