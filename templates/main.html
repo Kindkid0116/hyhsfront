@@ -7,10 +7,10 @@
     <!-- 카카오 SDK 불러오기 -->
     <script>
     // Flask에서 전달받은 카카오 API 키 사용
-    const kakao_javascript = "{{ kakao_key }}";
+    const KAKAO_JAVASCRIPT_KEY = "{{ kakao_key }}";
 
     // 카카오 SDK 초기화
-    Kakao.init(kakao_javascript);
+    Kakao.init(KAKAO_JAVASCRIPT_KEY);
     console.log("카카오 SDK 초기화 상태:", Kakao.isInitialized());
 </script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
