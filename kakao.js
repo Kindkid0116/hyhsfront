@@ -1,4 +1,4 @@
-Kakao.init("0b0a3dbfeff3a83de6ba52cc9e8c9922");  // 카카오 개발자 센터에서 발급한 JavaScript 키 입력
+Kakao.init("9b49aa02342896995714b81149a51bdc");  // 카카오 개발자 센터에서 발급한 JavaScript 키 입력
 console.log("카카오 SDK 초기화 상태:", Kakao.isInitialized());
 
 // 카카오 로그인 함수
@@ -23,8 +23,8 @@ function sendKakaoMessage() {
                 object_type: "text",
                 text: "🚨 교복 위반 알림! 🚨\n\n학생이 교복 위반으로 등록되었습니다.",
                 link: {
-                    web_url: "https://your-site.com",
-                    mobile_web_url: "https://your-site.com"
+                    web_url: "https://hyhsfront.onrender.com",
+                    mobile_web_url: "https://hyhsfront.onrender.com"
                 }
             }
         },
