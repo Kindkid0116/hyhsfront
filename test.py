@@ -18,6 +18,9 @@ def submit():
     database.save(name, num)
     return render_template('index.html')
 
+@application.route('/login')
+def login():
+    return render_template('login.html')
 @application.route('/list')
 def list():
     students = database.get_all_students()
