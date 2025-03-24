@@ -15,7 +15,7 @@ function loginWithKakao() {
 }
 function loginWithKakao() {
     Kakao.Auth.authorize({
-        redirectUri: "https://hyhsfront.onrender.com"
+        redirectUri: "https://hyhsuniform.com/oauth"
     });
 }
 // 카카오톡 메시지 보내기 함수
